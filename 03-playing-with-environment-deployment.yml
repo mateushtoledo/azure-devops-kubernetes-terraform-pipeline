@@ -1,0 +1,17 @@
+trigger:
+- master
+
+# Deploy the same image on two diferent OS
+strategy:
+  matrix:
+    linux:
+      operatingSystem: 'ubuntu-latest'
+    mac:
+      operatingSystem: 'macos-latest'
+
+pool:
+  vmImage: $(operatingSystem)
+
+steps:
+- script: echo Running on $(operatingSystem)
+  displayName: 'Run a one-line script'
